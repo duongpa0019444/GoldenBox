@@ -3,22 +3,14 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-<<<<<<< HEAD
 use Illuminate\Http\Request;
-=======
 use App\Models\orders;
-use Illuminate\Http\Request;
 use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\DB;
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 
 class dashboardController extends Controller
 {
-    //
-<<<<<<< HEAD
-    public function dashBoard(){
-        return view('admin.dashdoard');
-=======
+
     public function dashBoard(HttpRequest $request)
     {
         $countData = DB::select("
@@ -366,6 +358,6 @@ class dashboardController extends Controller
                 'message' => $e->getMessage(),
             ], 500);
         }
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
+
     }
 }
