@@ -1,8 +1,7 @@
-//Lấy dữ liệu doanh thu các ngày trong tuần
 
 document.addEventListener('DOMContentLoaded', async function () {
     try {
-        // Dữ liệu linh động
+        // Khởi tạo đối tượng dữ liệu
         const dataSets = {
             ngay: {
                 tongTien: [],
@@ -20,42 +19,41 @@ document.addEventListener('DOMContentLoaded', async function () {
                 categories: ["Th1", "Th2", "Th3", "Th4", "Th5", "Th6", "Th7", "Th8", "Th9", "Th10", "Th11", "Th12"]
             }
         };
-        const response = await fetch('/admin/dashboard/chartturnover');
-        const data = await response.json();
 
-        //gán dữ liệu cho ngày
-        dataSets.ngay.tongTien = data.turnoverDate.map(item => parseFloat(item.doanh_thu));
-        dataSets.ngay.soLuongDon = data.turnoverDate.map(item => item.so_don);
+        const selectElement = document.getElementById('product-categories');
+        let currentSet = 'thang'; // Mặc định theo tháng
 
-        //gán dữ liệu cho tuần
-        dataSets.tuan.tongTien = data.turnoverWeek.map(item => parseFloat(item.doanh_thu));
-        dataSets.tuan.soLuongDon = data.turnoverWeek.map(item => item.so_don);
+        // Hàm load và cập nhật dữ liệu từ API
+        async function loadData(productId = '') {
+            const url = productId
+                ? `/admin/dashboard/chartturnover/${productId}`
+                : '/admin/dashboard/chartturnover';
 
-        //gán dữ liệu cho tháng
-        dataSets.thang.tongTien = data.turnoverMonth.map(item => parseFloat(item.doanh_thu));
-        dataSets.thang.soLuongDon = data.turnoverMonth.map(item => item.so_don);
+            const response = await fetch(url);
+            const data = await response.json();
+            console.log(data.turnoverDate);
 
+            // Gán dữ liệu vào dataSets
+            dataSets.ngay.tongTien = data.turnoverDate.map(item => parseFloat(item.doanh_thu));
+            dataSets.ngay.soLuongDon = data.turnoverDate.map(item => item.so_don);
 
-        // Cấu hình mặc định ban đầu (theo tháng)
-        var options = {
-            series: [
-                {
-                    name: "Tổng Tiền",
-                    type: "bar",
-                    data: data.turnoverMonth.map(item => parseFloat(item.doanh_thu)),
-                },
-                {
-                    name: "Số lượng đơn",
-                    type: "area",
-                    data: data.turnoverMonth.map(item => item.so_don),
-                }
-            ],
+            dataSets.tuan.tongTien = data.turnoverWeek.map(item => parseFloat(item.doanh_thu));
+            dataSets.tuan.soLuongDon = data.turnoverWeek.map(item => item.so_don);
+
+            dataSets.thang.tongTien = data.turnoverMonth.map(item => parseFloat(item.doanh_thu));
+            dataSets.thang.soLuongDon = data.turnoverMonth.map(item => item.so_don);
+
+            // Cập nhật biểu đồ
+            updateChart();
+        }
+
+        // Cấu hình ApexCharts
+        const options = {
+            series: [],
             chart: {
                 height: 313,
                 type: "line",
-                toolbar: {
-                    show: false,
-                },
+                toolbar: { show: false },
             },
             stroke: {
                 dashArray: [0, 0],
@@ -71,49 +69,28 @@ document.addEventListener('DOMContentLoaded', async function () {
                     opacityFrom: 0.5,
                     opacityTo: 0,
                     stops: [0, 90]
-                },
+                }
             },
             markers: {
                 size: [0, 0],
                 strokeWidth: 2,
-                hover: {
-                    size: 4,
-                },
+                hover: { size: 4 }
             },
             xaxis: {
-                categories: dataSets.thang.categories,
-                axisTicks: {
-                    show: false,
-                },
-                axisBorder: {
-                    show: false,
-                },
+                categories: [],
+                axisTicks: { show: false },
+                axisBorder: { show: false }
             },
             yaxis: {
                 min: 0,
-                axisBorder: {
-                    show: false,
-                }
+                axisBorder: { show: false }
             },
             grid: {
                 show: true,
                 strokeDashArray: 3,
-                xaxis: {
-                    lines: {
-                        show: false,
-                    },
-                },
-                yaxis: {
-                    lines: {
-                        show: true,
-                    },
-                },
-                padding: {
-                    top: 0,
-                    right: -2,
-                    bottom: 0,
-                    left: 10,
-                },
+                xaxis: { lines: { show: false } },
+                yaxis: { lines: { show: true } },
+                padding: { top: 0, right: -2, bottom: 0, left: 10 }
             },
             legend: {
                 show: true,
@@ -123,19 +100,16 @@ document.addEventListener('DOMContentLoaded', async function () {
                 markers: {
                     width: 9,
                     height: 9,
-                    radius: 6,
+                    radius: 6
                 },
-                itemMargin: {
-                    horizontal: 10,
-                    vertical: 0,
-                },
+                itemMargin: { horizontal: 10, vertical: 0 }
             },
             plotOptions: {
                 bar: {
                     columnWidth: "30%",
                     barHeight: "70%",
-                    borderRadius: 3,
-                },
+                    borderRadius: 3
+                }
             },
             colors: ["#ff6c2f", "#22c55e"],
             tooltip: {
@@ -143,33 +117,56 @@ document.addEventListener('DOMContentLoaded', async function () {
                 y: [
                     {
                         formatter: function (y) {
-                            if (typeof y !== "undefined") {
-                                return y.toLocaleString() + " đ";
-                            }
-                            return y;
-                        },
+                            return y !== undefined ? y.toLocaleString() + " đ" : y;
+                        }
                     },
                     {
                         formatter: function (y) {
-                            if (typeof y !== "undefined") {
-                                return y + " đơn";
-                            }
-                            return y;
-                        },
-                    },
-                ],
-            },
+                            return y !== undefined ? y + " đơn" : y;
+                        }
+                    }
+                ]
+            }
         };
 
-        // Render biểu đồ ban đầu
-        var chart = new ApexCharts(
+        // Tạo biểu đồ
+        const chart = new ApexCharts(
             document.querySelector("#dash-performance-chart"),
             options
         );
-
         chart.render();
 
-        // Xử lý sự kiện khi click các nút (Ngày, Tuần, Tháng)
+        // Cập nhật biểu đồ khi có dữ liệu
+        function updateChart() {
+            const selectedSet = dataSets[currentSet];
+
+            chart.updateOptions({
+                xaxis: {
+                    categories: selectedSet.categories
+                }
+            });
+
+            chart.updateSeries([
+                {
+                    name: "Tổng Tiền",
+                    type: "bar",
+                    data: selectedSet.tongTien
+                },
+                {
+                    name: "Số lượng",
+                    type: "area",
+                    data: selectedSet.soLuongDon
+                }
+            ]);
+        }
+
+        // Xử lý sự kiện chọn sản phẩm
+        selectElement.addEventListener('change', function () {
+            const selectedValue = this.value;
+            loadData(selectedValue);
+        });
+
+        // Xử lý nút "Ngày", "Tuần", "Tháng"
         document.querySelectorAll(".btn-outline-light").forEach((btn) => {
             btn.addEventListener("click", function () {
                 document.querySelectorAll(".btn-outline-light").forEach((b) =>
@@ -177,39 +174,17 @@ document.addEventListener('DOMContentLoaded', async function () {
                 );
                 this.classList.add("active");
 
-                const label = this.innerText.trim().toLowerCase(); // "ngày", "tuần", "tháng"
-                let selectedSet;
+                const label = this.innerText.trim().toLowerCase();
+                currentSet = (label === "ngày") ? 'ngay' : (label === "tuần") ? 'tuan' : 'thang';
 
-                if (label === "ngày") {
-                    selectedSet = dataSets.ngay;
-                } else if (label === "tuần") {
-                    selectedSet = dataSets.tuan;
-                } else {
-                    selectedSet = dataSets.thang;
-                }
-
-                // Cập nhật dữ liệu và trục X
-                chart.updateOptions({
-                    xaxis: {
-                        categories: selectedSet.categories
-                    }
-                });
-
-                chart.updateSeries([
-                    {
-                        name: "Tổng Tiền",
-                        data: selectedSet.tongTien
-                    },
-                    {
-                        name: "Số lượng đơn",
-                        data: selectedSet.soLuongDon
-                    }
-                ]);
+                updateChart();
             });
         });
+
+        // Gọi lần đầu khi load trang
+        await loadData();
 
     } catch (error) {
         console.error("Lỗi:", error);
     }
 });
-

@@ -12,6 +12,8 @@
     <meta name="description" content="A fully responsive premium admin dashboard template" />
     <meta name="author" content="Techzaa" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
@@ -29,6 +31,7 @@
     <!-- Theme Config js (Require in all Page) -->
     <script src="{{ asset('admin/js/config.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
@@ -77,12 +80,7 @@
 
 
                         <!-- App Search-->
-                        <form class="app-search d-none d-md-block ms-2">
-                            <div class="position-relative">
-                                <input type="search" class="form-control" placeholder="Search..." autocomplete="off" value="">
-                                <iconify-icon icon="solar:magnifer-linear" class="search-widget-icon"></iconify-icon>
-                            </div>
-                        </form>
+                     
                     </div>
                 </div>
             </div>
@@ -230,7 +228,7 @@
                     <li class="menu-title">Quản lý</li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin">
+                        <a class="nav-link" href="{{ route('admin.dashboard') }}">
                             <span class="nav-icon">
                                 <iconify-icon icon="solar:widget-5-bold-duotone"></iconify-icon>
                             </span>
@@ -248,10 +246,10 @@
                         <div class="collapse" id="sidebarProducts">
                             <ul class="nav sub-navbar-nav">
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="/admin/product/list">Danh sách</a>
+                                    <a class="sub-nav-link" href="{{ route('admin.product.index') }}">Danh sách</a>
                                 </li>
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="/admin/product/create">Thêm sản phẩm</a>
+                                    <a class="sub-nav-link" href="{{ route('admin.products.add') }}">Thêm sản phẩm</a>
                                 </li>
 
                             </ul>
@@ -268,10 +266,10 @@
                         <div class="collapse" id="sidebarCategory">
                             <ul class="nav sub-navbar-nav">
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="/admin/category/list">Dánh sách</a>
+                                    <a class="sub-nav-link" href="{{ route('admin.categories.index') }}">Dánh sách</a>
                                 </li>
                                 <li class="sub-nav-item">
-                                    <a class="sub-nav-link" href="/admin/category/create">Thêm danh mục</a>
+                                    <a class="sub-nav-link" href="{{ route('admin.categories.add') }}">Thêm danh mục</a>
                                 </li>
 
                             </ul>
@@ -384,6 +382,25 @@
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
       AOS.init();
+      setTimeout(() => {
+            fetch('/clear-temp-folder', {
+                method: 'DELETE',
+                headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}', // nếu dùng trong Blade
+                'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Có lỗi xảy ra');
+                return response.json();
+            })
+            .then(data => {
+                console.log(data.message);
+            })
+            .catch(error => {
+                console.error('Lỗi:', error.message);
+            });
+            }, 300000); // 5phút
     </script>
 
 

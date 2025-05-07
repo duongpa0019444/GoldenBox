@@ -84,8 +84,19 @@
                 <div class="col-xxl-8" data-aos="fade-up" data-aos-duration="1500">
                     <div class="card">
                         <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <h4 class="card-title">Thống kê doanh thu</h4>
+                            <div class="d-flex justify-content-between align-item-center">
+                                <h4 class="card-title">Thống kê doanh thu theo</h4>
+                                <div class="col-lg-4">
+                                    <form>
+                                        <select class="form-control" id="product-categories" data-choices
+                                            data-choices-groups data-placeholder="Select Categories" name="where">
+                                            <option value="">Đơn Hàng đã bán</option>
+                                            @foreach ($products as $product)
+                                                <option value="{{ $product->id }}">{{ $product->ten_san_pham_vi }}</option>
+                                            @endforeach
+                                        </select>
+                                    </form>
+                                </div>
                                 <div>
                                     <button type="button" class="btn btn-sm btn-outline-light">Ngày</button>
                                     <button type="button" class="btn btn-sm btn-outline-light">Tuần</button>
@@ -220,16 +231,22 @@
                         <div class="card" data-aos="fade-up" data-aos-duration="800">
                             <div class="d-flex card-header justify-content-between align-items-center">
                                 <div>
-                                    <h4 class="card-title">Đơn Hàng Mới</h4>
+                                    <h4 class="card-title">Đơn Hàng Mới (Chưa gọi)</h4>
                                 </div>
                                 <!-- App Search-->
-                                <form class="app-search d-none d-md-block ms-2">
+                                <!-- HTML -->
+                                <form class="app-search d-none d-md-block ms-2" onsubmit="return false;">
                                     <div class="position-relative">
-                                        <input type="search" id="search" class="form-control" placeholder="Search..." autocomplete="off" value="">
-                                        <iconify-icon icon="solar:magnifer-linear" class="search-widget-icon"></iconify-icon>
+                                        <input type="text" id="keyword" class="form-control"
+                                            placeholder="Search..." autocomplete="off" value="">
+
+                                        <button type="button" id="submitSearch"
+                                            class="btn btn-link position-absolute end-0 top-0 mt-1 me-2">
+                                            <iconify-icon icon="solar:magnifer-linear"
+                                                class="search-widget-icon"></iconify-icon>
+                                        </button>
                                     </div>
                                 </form>
-
 
                             </div>
                             <div class="card-body p-0">
@@ -260,7 +277,7 @@
                                                             class="link-primary fw-medium">{{ $ordersNew->ho_ten }}</a>
                                                     </td>
 
-                                                    <td>{{ $ordersNew->tong_tien_formatted  }}</td>
+                                                    <td>{{ $ordersNew->tong_tien_formatted }}</td>
                                                     <td>
                                                         <span
                                                             class="badge bg-light text-dark px-2 py-1 fs-13">{{ $ordersNew->trang_thai_thanh_toan }}</span>
@@ -321,8 +338,6 @@
 
 
         <script>
-
-
             //Phân trang-------------------------------
             const wrapper = document.getElementById('pagination-wrapper');
             wrapper.addEventListener('click', function(event) {
@@ -335,8 +350,10 @@
                     const url = target.getAttribute('href');
                     console.log("Clicked pagination link:", url);
 
-                    loadOrders(url)
+                    loadOrders(url);
+
                 }
+
             });
 
 
@@ -351,7 +368,7 @@
                         }
                     });
                     const data = await response.json();
-
+                    console.log(data);
                     //Thay đổi nút chuyển trang
                     document.getElementById('pagination-wrapper').innerHTML = data.pagination;
 
@@ -398,28 +415,40 @@
             }
 
 
-            //Hàm xử lý định dạng ngày
-            function formatDateTime(dateString) {
-                const date = new Date(dateString);
 
-                const day = String(date.getDate()).padStart(2, '0');
-                const month = String(date.getMonth() + 1).padStart(2, '0'); // Tháng bắt đầu từ 0
-                const year = date.getFullYear();
 
-                const hours = String(date.getHours()).padStart(2, '0');
-                const minutes = String(date.getMinutes()).padStart(2, '0');
+            //TÌM KIẾM----------------------------------
 
-                return `${day}/${month}/${year} ${hours}:${minutes}`;
-            }
+            const searchInput = document.getElementById('keyword');
+            const searchIcon = document.getElementById('submitSearch');
 
-                // Tìm kiếm --------------------------------
-                $(document).ready(function(){
-                $("#search").on("keyup", function() {
-                    var value = $(this).val().toLowerCase();
-                    $("#orders-body tr").filter(function() {
-                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-                    });
-                });
+            // Lắng nghe sự kiện keydown trên input
+            searchInput.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault(); // Ngăn không cho form bị submit
+                    searchIcon.click(); // Trigger sự kiện click khi nhấn Enter
+                }
             });
+
+            // Sự kiện click vào button
+            searchIcon.addEventListener('click', () => {
+                const searchTerm = searchInput.value.trim();
+
+                if (searchTerm) {
+                    const urlsearch = `/admin/orders/search?search=${encodeURIComponent(searchTerm)}`;
+
+                    loadOrders(urlsearch);
+                } else {
+                    //lấy url hiện tại và gọi loadorders
+                    const currentUrl = window.location.href;
+                    loadOrders(currentUrl);
+                }
+            });
+
+            function formatDateTime(datetime) {
+                if (!datetime) return '';
+                const date = new Date(datetime);
+                return date.toLocaleString('vi-VN'); // hoặc format theo ý muốn
+            }
         </script>
     @endsection
