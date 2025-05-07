@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
-<<<<<<< HEAD
--- Thời gian đã tạo: Th4 27, 2025 lúc 05:06 AM
-=======
--- Thời gian đã tạo: Th5 04, 2025 lúc 04:26 PM
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
+-- Thời gian đã tạo: Th5 07, 2025 lúc 04:58 PM
 -- Phiên bản máy phục vụ: 10.4.32-MariaDB
 -- Phiên bản PHP: 8.2.12
 
@@ -48,8 +44,6 @@ CREATE TABLE `bai_viets` (
   `id_user` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< HEAD
-=======
 --
 -- Đang đổ dữ liệu cho bảng `bai_viets`
 --
@@ -58,7 +52,6 @@ INSERT INTO `bai_viets` (`id`, `title_vi`, `title_en`, `mo_ta_ngan_vi`, `mo_ta_n
 (1, 'Bài viết 1', 'Post 1', 'Mô tả 1', 'Desc 1', 'Nguyen Van A', 'Nội dung 1', 'Content 1', 10, 'img1.jpg', 'bai-viet-1', '2025-05-01 10:48:06', '2025-05-01 10:48:06', 1),
 (2, 'Bài viết 2', 'Post 2', 'Mô tả 2', 'Desc 2', 'Tran Thi B', 'Nội dung 2', 'Content 2', 5, 'img2.jpg', 'bai-viet-2', '2025-05-01 10:48:06', '2025-05-01 10:48:06', 2);
 
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 -- --------------------------------------------------------
 
 --
@@ -97,8 +90,6 @@ CREATE TABLE `chi_tiet_anhs` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< HEAD
-=======
 --
 -- Đang đổ dữ liệu cho bảng `chi_tiet_anhs`
 --
@@ -108,7 +99,6 @@ INSERT INTO `chi_tiet_anhs` (`id`, `id_san_pham`, `hinh_anh`, `created_at`, `upd
 (2, 1, 'iphone14_back.jpg', '2025-05-01 10:47:06', '2025-05-01 10:47:06'),
 (3, 2, 'macbook_side.jpg', '2025-05-01 10:47:06', '2025-05-01 10:47:06');
 
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 -- --------------------------------------------------------
 
 --
@@ -122,17 +112,36 @@ CREATE TABLE `chi_tiet_don_hangs` (
   `don_gia` decimal(15,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< HEAD
-=======
 --
 -- Đang đổ dữ liệu cho bảng `chi_tiet_don_hangs`
 --
 
 INSERT INTO `chi_tiet_don_hangs` (`id_don_hang`, `id_san_pham`, `so_luong`, `don_gia`) VALUES
-(1, 1, 1, 18000000.00),
-(2, 2, 1, 29750000.00);
+(1, 1, 2, 100000.00),
+(1, 2, 1, 150000.00),
+(2, 1, 3, 100000.00),
+(2, 2, 2, 150000.00),
+(3, 1, 1, 100000.00),
+(3, 2, 1, 150000.00),
+(45, 1, 2, 100000.00),
+(45, 2, 1, 150000.00),
+(46, 1, 3, 100000.00),
+(46, 2, 2, 150000.00),
+(47, 1, 1, 100000.00),
+(47, 2, 1, 150000.00),
+(48, 1, 2, 100000.00),
+(48, 2, 2, 150000.00),
+(49, 1, 1, 100000.00),
+(49, 2, 3, 150000.00),
+(50, 1, 2, 100000.00),
+(50, 2, 1, 150000.00),
+(51, 1, 1, 100000.00),
+(51, 2, 1, 150000.00),
+(52, 1, 3, 100000.00),
+(52, 2, 2, 150000.00),
+(53, 1, 2, 100000.00),
+(53, 2, 2, 150000.00);
 
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 -- --------------------------------------------------------
 
 --
@@ -148,8 +157,6 @@ CREATE TABLE `danh_mucs` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< HEAD
-=======
 --
 -- Đang đổ dữ liệu cho bảng `danh_mucs`
 --
@@ -158,7 +165,6 @@ INSERT INTO `danh_mucs` (`id`, `ten_danh_muc_vi`, `ten_danh_muc_en`, `slug`, `cr
 (1, 'Điện thoại', 'Phones', 'dien-thoai', '2025-05-01 10:42:49', '2025-05-01 10:42:49'),
 (2, 'Laptop', 'Laptops', 'laptop', '2025-05-01 10:42:49', '2025-05-01 10:42:49');
 
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 -- --------------------------------------------------------
 
 --
@@ -167,28 +173,11 @@ INSERT INTO `danh_mucs` (`id`, `ten_danh_muc_vi`, `ten_danh_muc_en`, `slug`, `cr
 
 CREATE TABLE `don_hangs` (
   `id` int(11) NOT NULL,
-<<<<<<< HEAD
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `trang_thai_giao_hang` enum('chua_giao','da_giao') DEFAULT 'chua_giao',
-  `trang_thai_thanh_toan` enum('chua_thanh_toan','da_thanh_toan') DEFAULT 'chua_thanh_toan',
-  `id_user` bigint(20) UNSIGNED DEFAULT NULL,
-  `tong_tien` decimal(15,2) NOT NULL,
-  `ghi_chu` text DEFAULT NULL,
-  `phuong_thuc_thanh_toan` varchar(100) DEFAULT NULL,
-  `id_ma_khuyen_mai` int(11) DEFAULT NULL,
-  `ho_ten` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `so_dien_thoai` varchar(20) DEFAULT NULL,
-  `dia_chi` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-=======
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `updated_at` timestamp NULL DEFAULT NULL,
-  `trang_thai_giao_hang` enum('chua_giao','da_giao') NOT NULL DEFAULT 'chua_giao',
-  `trang_thai_thanh_toan` enum('chua_thanh_toan','da_thanh_toan') NOT NULL DEFAULT 'chua_thanh_toan',
-  `trang_thai_call` enum('da_goi','chua_goi','','') NOT NULL DEFAULT 'chua_goi',
+  `trang_thai_giao_hang` enum('chưa giao','đã giao') NOT NULL DEFAULT 'chưa giao',
+  `trang_thai_thanh_toan` enum('chưa thanh toán','đã thanh toán') NOT NULL DEFAULT 'chưa thanh toán',
+  `trang_thai_call` enum('đã gọi','chưa gọi') NOT NULL DEFAULT 'chưa gọi',
   `id_user` bigint(20) UNSIGNED DEFAULT NULL,
   `tong_tien` decimal(15,2) NOT NULL,
   `ghi_chu` text DEFAULT NULL,
@@ -205,21 +194,20 @@ CREATE TABLE `don_hangs` (
 --
 
 INSERT INTO `don_hangs` (`id`, `created_at`, `updated_at`, `trang_thai_giao_hang`, `trang_thai_thanh_toan`, `trang_thai_call`, `id_user`, `tong_tien`, `ghi_chu`, `phuong_thuc_thanh_toan`, `id_ma_khuyen_mai`, `ho_ten`, `email`, `so_dien_thoai`, `dia_chi`) VALUES
-(1, '2025-05-01 10:50:32', '2025-05-01 10:50:32', 'da_giao', 'da_thanh_toan', 'chua_goi', 1, 18000000.00, 'Giao nhanh', 'cod', 1, 'Nguyen Van A', 'a@gmail.com', '0123456789', 'Hà Nội'),
-(2, '2025-05-04 13:38:27', '2025-05-01 10:50:32', 'chua_giao', 'da_thanh_toan', 'chua_goi', 2, 29750000.00, 'Giao trước 3h', 'banking', 2, 'Tran Thi B', 'b@gmail.com', '0987654321', 'TP.HCM'),
-(3, '2025-05-02 10:31:08', NULL, 'da_giao', 'da_thanh_toan', 'chua_goi', 4, 10000000.00, 'Giao trước 12h ', 'Thanh toán khi nhận hàng', 1, 'Nguyễn Bá Thước', 'ndns2@Gmail.com', '0961460727', '11/1525 Đông vệ Tp.Thanh Hóa'),
-(44, '2025-05-01 03:00:00', NULL, 'chua_giao', 'chua_thanh_toan', 'chua_goi', 2, 500000.00, 'Giao giờ hành chính', 'Thanh toán khi nhận hàng', 2, 'Trần Văn Bình', 'binhtran@example.com', '0901234567', '123 Lê Lợi, Hà Nội'),
-(45, '2025-05-02 07:30:00', NULL, 'da_giao', 'da_thanh_toan', 'chua_goi', 3, 1500000.00, '', 'Chuyển khoản', NULL, 'Phạm Thị Hoa', 'hoa.pham@gmail.com', '0912345678', '456 Trần Phú, TP.HCM'),
-(46, '2025-05-03 02:15:00', NULL, 'chua_giao', 'chua_thanh_toan', 'chua_goi', 3, 750000.00, 'Giao buổi chiều', 'Thanh toán khi nhận hàng', NULL, 'Lê Minh Tú', 'minhtu@yahoo.com', '0987654321', '789 Nguyễn Huệ, Đà Nẵng'),
-(47, '2025-04-30 10:45:00', NULL, 'chua_giao', 'chua_thanh_toan', 'chua_goi', 3, 200000.00, 'Khách không nhận hàng', 'Thanh toán khi nhận hàng', NULL, 'Hoàng Văn Long', 'longhv@outlook.com', '0933344556', '321 Quang Trung, Hải Phòng'),
-(48, '2025-04-29 01:00:00', NULL, 'da_giao', 'da_thanh_toan', 'chua_goi', 2, 3500000.00, 'Giao sớm trước 9h', 'Momo', NULL, 'Nguyễn Văn An', 'an.nguyen@gmail.com', '0966112233', '22/10 Phạm Văn Đồng, Cần Thơ'),
-(49, '2025-05-01 04:20:00', NULL, 'chua_giao', 'chua_thanh_toan', 'chua_goi', 2, 1200000.00, '', 'ZaloPay', NULL, 'Đỗ Thị Lan', 'lan.do@gmail.com', '0977888999', '88/3A Hoàng Hoa Thám, Huế'),
-(50, '2025-05-02 09:00:00', NULL, 'da_giao', 'da_thanh_toan', 'chua_goi', 3, 2100000.00, 'Giao tại cơ quan', 'Chuyển khoản', NULL, 'Ngô Quang Hưng', 'h.nqoang@gmail.com', '0923456789', 'Tầng 5, Tòa nhà ABC, TP.HCM'),
-(51, '2025-05-03 05:30:00', NULL, 'chua_giao', 'chua_thanh_toan', 'chua_goi', 3, 890000.00, '', 'Thanh toán khi nhận hàng', NULL, 'Trịnh Thị Ngọc', 'ngoc.trinh@example.com', '0944556677', 'Ngõ 68, Nguyễn Trãi, Hà Nội'),
-(52, '2025-05-02 12:10:00', NULL, 'da_giao', 'da_thanh_toan', 'chua_goi', 2, 620000.00, 'Giao tận nơi sau 18h', 'Momo', NULL, 'Vũ Đức Anh', 'anhvuduc@example.com', '0911223344', '12 Trần Đại Nghĩa, Hà Nội'),
-(53, '2025-05-03 00:50:00', NULL, 'chua_giao', 'chua_thanh_toan', 'chua_goi', 2, 300000.00, '', 'ZaloPay', NULL, 'Lý Thị Mai', 'maily@gmail.com', '0977332211', 'Phường 9, Quận 3, TP.HCM');
+(1, '2025-05-01 01:28:58', '2025-05-01 10:50:32', 'chưa giao', 'chưa thanh toán', 'chưa gọi', 1, 18000000.00, 'Giao nhanh', 'cod', 1, 'Nguyen Van A', 'a@gmail.com', '0123456789', 'Hà Nội'),
+(2, '2025-05-02 01:29:16', '2025-05-01 10:50:32', 'đã giao', 'đã thanh toán', 'đã gọi', 2, 29750000.00, 'Giao trước 3h', 'banking', 2, 'Tran Thi B', 'b@gmail.com', '0987654321', 'TP.HCM'),
+(3, '2025-05-03 01:29:42', NULL, 'chưa giao', 'đã thanh toán', 'chưa gọi', 4, 10000000.00, 'Giao trước 12h ', 'Thanh toán khi nhận hàng', 1, 'Nguyễn Bá Thước', 'ndns2@Gmail.com', '0961460727', '11/1525 Đông vệ Tp.Thanh Hóa'),
+(44, '2025-05-04 01:30:05', NULL, 'chưa giao', 'đã thanh toán', 'đã gọi', 2, 500000.00, 'Giao giờ hành chính', 'Thanh toán khi nhận hàng', 2, 'Trần Văn Bình', 'binhtran@example.com', '0901234567', '123 Lê Lợi, Hà Nội'),
+(45, '2025-05-05 02:10:45', NULL, 'đã giao', 'đã thanh toán', 'đã gọi', 3, 1500000.00, '', 'Chuyển khoản', NULL, 'Phạm Thị Hoa', 'hoa.pham@gmail.com', '0912345678', '456 Trần Phú, TP.HCM'),
+(46, '2025-05-06 02:11:03', NULL, 'đã giao', 'đã thanh toán', 'đã gọi', 3, 750000.00, 'Giao buổi chiều', 'Thanh toán khi nhận hàng', NULL, 'Lê Minh Tú', 'minhtu@yahoo.com', '0987654321', '789 Nguyễn Huệ, Đà Nẵng'),
+(47, '2025-05-07 02:11:26', NULL, 'đã giao', 'đã thanh toán', 'đã gọi', 3, 200000.00, 'Khách không nhận hàng', 'Thanh toán khi nhận hàng', NULL, 'Hoàng Văn Long', 'longhv@outlook.com', '0933344556', '321 Quang Trung, Hải Phòng'),
+(48, '2025-05-07 02:14:35', NULL, 'đã giao', 'đã thanh toán', 'đã gọi', 2, 3500000.00, 'Giao sớm trước 9h', 'Momo', NULL, 'Nguyễn Văn An', 'an.nguyen@gmail.com', '0966112233', '22/10 Phạm Văn Đồng, Cần Thơ'),
+(49, '2025-05-01 02:14:18', NULL, 'chưa giao', 'chưa thanh toán', 'chưa gọi', 2, 1200000.00, '', 'ZaloPay', NULL, 'Đỗ Thị Lan', 'lan.do@gmail.com', '0977888999', '88/3A Hoàng Hoa Thám, Huế'),
+(50, '2025-05-01 02:12:13', NULL, 'đã giao', 'đã thanh toán', 'đã gọi', 3, 2100000.00, 'Giao tại cơ quan', 'Chuyển khoản', NULL, 'Ngô Quang Hưng', 'h.nqoang@gmail.com', '0923456789', 'Tầng 5, Tòa nhà ABC, TP.HCM'),
+(51, '2025-05-03 02:13:32', NULL, 'đã giao', 'đã thanh toán', 'đã gọi', 3, 890000.00, '', 'Thanh toán khi nhận hàng', NULL, 'Trịnh Thị Ngọc', 'ngoc.trinh@example.com', '0944556677', 'Ngõ 68, Nguyễn Trãi, Hà Nội'),
+(52, '2025-05-04 02:13:48', NULL, 'đã giao', 'đã thanh toán', 'đã gọi', 2, 620000.00, 'Giao tận nơi sau 18h', 'Momo', NULL, 'Vũ Đức Anh', 'anhvuduc@example.com', '0911223344', '12 Trần Đại Nghĩa, Hà Nội'),
+(53, '2025-05-05 02:14:02', NULL, 'chưa giao', 'chưa thanh toán', 'chưa gọi', 2, 300000.00, '', 'ZaloPay', NULL, 'Lý Thị Mai', 'maily@gmail.com', '0977332211', 'Phường 9, Quận 3, TP.HCM');
 
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 -- --------------------------------------------------------
 
 --
@@ -274,25 +262,6 @@ CREATE TABLE `job_batches` (
 -- --------------------------------------------------------
 
 --
-<<<<<<< HEAD
--- Cấu trúc bảng cho bảng `khach_hangs`
---
-
-CREATE TABLE `khach_hangs` (
-  `id` int(11) NOT NULL,
-  `ho_ten` varchar(255) NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `so_dien_thoai` varchar(20) DEFAULT NULL,
-  `dia_chi` text DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
-=======
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 -- Cấu trúc bảng cho bảng `ma_khuyen_mais`
 --
 
@@ -310,8 +279,6 @@ CREATE TABLE `ma_khuyen_mais` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< HEAD
-=======
 --
 -- Đang đổ dữ liệu cho bảng `ma_khuyen_mais`
 --
@@ -320,7 +287,6 @@ INSERT INTO `ma_khuyen_mais` (`id`, `ma_code`, `mo_ta`, `gia_tri`, `loai`, `ngay
 (1, 'SALE10', 'Giảm 10%', 10, 'phan_tram', '2025-05-01', '2025-06-01', 100, 'con_hieu_luc', '2025-05-01 10:44:06', '2025-05-01 10:44:06'),
 (2, 'SALE15', 'Giảm 15%', 15, 'phan_tram', '2025-05-01', '2025-07-01', 50, 'con_hieu_luc', '2025-05-01 10:44:06', '2025-05-01 10:44:06');
 
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 -- --------------------------------------------------------
 
 --
@@ -381,8 +347,6 @@ CREATE TABLE `san_phams` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-<<<<<<< HEAD
-=======
 --
 -- Đang đổ dữ liệu cho bảng `san_phams`
 --
@@ -391,7 +355,6 @@ INSERT INTO `san_phams` (`id`, `ten_san_pham_vi`, `ten_san_pham_en`, `mo_ta_ngan
 (1, 'iPhone 14', 'iPhone 14', 'Mô tả IP14', 'Desc IP14', 1, NULL, NULL, 'iphone14.jpg', 100, 10, 20000000.00, 20000000.00, 10, 'con_ban', 'iphone-14', '2025-05-01 10:46:29', '2025-05-01 10:46:29'),
 (2, 'MacBook Pro', 'MacBook Pro', 'Mô tả MBP', 'Desc MBP', 2, NULL, NULL, 'macbook.jpg', 50, 5, 35000000.00, 35000000.00, 15, 'con_ban', 'macbook-pro', '2025-05-01 10:46:29', '2025-05-01 10:46:29');
 
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 -- --------------------------------------------------------
 
 --
@@ -412,13 +375,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-<<<<<<< HEAD
-('kBX1bJfXD4MkTLdpFTUQH4Ba4r99Bc0aNntArMkI', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 Edg/135.0.0.0', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiRjJ1cE5wS2drMWJGT1NUUGxNWXRkZDl1WVY5aW4yRHJDQlFUWElEQiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MjE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMCI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1745723167);
-=======
-('5BshgS6TxYZefrGci5clJSUW7vkO5e03fWAmZ6ZA', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 Edg/135.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiTHZQR3NEcEhZTVpHdklIZ3dLWDgwbWZYMHYwc2FPNUtmRGJXNGVhcyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9kYXNoYm9hcmQvY2hhcnR0dXJub3ZlciI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1746328219),
-('6gknYsxDPuiJVc8O03myH5ObITpebCC6pCiEkqtz', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 Edg/135.0.0.0', 'YTo0OntzOjY6Il90b2tlbiI7czo0MDoiSFkwME9CUjZSSDd0Z3lLcjIwUGpXMkg1YlZHdmtETkZUQ3NqdlFFZCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NTE6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9kYXNoYm9hcmQvY2hhcnR0dXJub3ZlciI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==', 1746365917),
-('pgPOzPNqXihsaPDXaaCs2QJUEWPSCO9NvWm6UgCu', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36 Edg/135.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiWUxLdGZFa21mdDVtZjhSME1kdnluaDVwdG5SUGM4WGwwQXg4RHIxVyI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozNzoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2FkbWluL2Rhc2hib2FyZCI7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjUxOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vZGFzaGJvYXJkL2NoYXJ0dHVybm92ZXIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1746336783);
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
+('pAxOvSG5Hm9OERJsvEg30MT1rlMDP9vKgyS4QVFs', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36 Edg/136.0.0.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiTTdUWWxpQVcyemd6MlhGNWdUZVhLcE5VZ213aEpYaExvbFptQVpMRSI7czozOiJ1cmwiO2E6MTp7czo4OiJpbnRlbmRlZCI7czozNzoiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2FkbWluL2Rhc2hib2FyZCI7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjUxOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vZGFzaGJvYXJkL2NoYXJ0dHVybm92ZXIiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=', 1746586394);
 
 -- --------------------------------------------------------
 
@@ -439,8 +396,6 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
-<<<<<<< HEAD
-=======
 -- Đang đổ dữ liệu cho bảng `users`
 --
 
@@ -451,7 +406,6 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (4, 'Le Van C', 'c@gmail.com', NULL, '123456', NULL, 'nhanvien', '2025-05-01 10:47:56', '2025-05-01 10:47:56');
 
 --
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 -- Chỉ mục cho các bảng đã đổ
 --
 
@@ -523,15 +477,6 @@ ALTER TABLE `job_batches`
   ADD PRIMARY KEY (`id`);
 
 --
-<<<<<<< HEAD
--- Chỉ mục cho bảng `khach_hangs`
---
-ALTER TABLE `khach_hangs`
-  ADD PRIMARY KEY (`id`);
-
---
-=======
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 -- Chỉ mục cho bảng `ma_khuyen_mais`
 --
 ALTER TABLE `ma_khuyen_mais`
@@ -555,12 +500,7 @@ ALTER TABLE `password_reset_tokens`
 --
 ALTER TABLE `san_phams`
   ADD PRIMARY KEY (`id`),
-<<<<<<< HEAD
-  ADD KEY `id_danh_muc` (`id_danh_muc`),
-  ADD KEY `khuyen_mai` (`khuyen_mai`);
-=======
   ADD KEY `id_danh_muc` (`id_danh_muc`);
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 
 --
 -- Chỉ mục cho bảng `sessions`
@@ -585,41 +525,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `bai_viets`
 --
 ALTER TABLE `bai_viets`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 
 --
 -- AUTO_INCREMENT cho bảng `chi_tiet_anhs`
 --
 ALTER TABLE `chi_tiet_anhs`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 
 --
 -- AUTO_INCREMENT cho bảng `danh_mucs`
 --
 ALTER TABLE `danh_mucs`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 
 --
 -- AUTO_INCREMENT cho bảng `don_hangs`
 --
 ALTER TABLE `don_hangs`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 
 --
 -- AUTO_INCREMENT cho bảng `failed_jobs`
@@ -634,23 +558,10 @@ ALTER TABLE `jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
-<<<<<<< HEAD
--- AUTO_INCREMENT cho bảng `khach_hangs`
---
-ALTER TABLE `khach_hangs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT cho bảng `ma_khuyen_mais`
---
-ALTER TABLE `ma_khuyen_mais`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-=======
 -- AUTO_INCREMENT cho bảng `ma_khuyen_mais`
 --
 ALTER TABLE `ma_khuyen_mais`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 
 --
 -- AUTO_INCREMENT cho bảng `migrations`
@@ -662,21 +573,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT cho bảng `san_phams`
 --
 ALTER TABLE `san_phams`
-<<<<<<< HEAD
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-=======
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 
 --
 -- AUTO_INCREMENT cho bảng `users`
 --
 ALTER TABLE `users`
-<<<<<<< HEAD
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-=======
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -712,12 +615,7 @@ ALTER TABLE `don_hangs`
 -- Các ràng buộc cho bảng `san_phams`
 --
 ALTER TABLE `san_phams`
-<<<<<<< HEAD
-  ADD CONSTRAINT `san_phams_ibfk_1` FOREIGN KEY (`id_danh_muc`) REFERENCES `danh_mucs` (`id`),
-  ADD CONSTRAINT `san_phams_ibfk_2` FOREIGN KEY (`khuyen_mai`) REFERENCES `ma_khuyen_mais` (`id`);
-=======
   ADD CONSTRAINT `san_phams_ibfk_1` FOREIGN KEY (`id_danh_muc`) REFERENCES `danh_mucs` (`id`);
->>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

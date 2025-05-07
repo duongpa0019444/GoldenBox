@@ -1,5 +1,8 @@
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 //
 // sales_funnel
 //
@@ -30,7 +33,11 @@ var options = {
         stops: [0, 100],
       },
     },
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
     markers: {
       size: 0,
     },
@@ -56,4 +63,7 @@ var options = {
   };
   var chart = new ApexCharts(document.querySelector("#chart2"), options);
   chart.render();
+<<<<<<< HEAD
   
+=======
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff

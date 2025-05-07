@@ -5719,6 +5719,13 @@ textarea.form-control-lg {
   border: var(--bs-card-border-width) solid var(--bs-card-border-color);
   border-radius: var(--bs-card-border-radius);
 }
+<<<<<<< HEAD
+=======
+
+.card:hover{
+    box-shadow: 0 0 3px gray;
+}
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 .card > hr {
   margin-right: 0;
   margin-left: 0;
@@ -15505,7 +15512,11 @@ textarea.form-control-lg {
       -ms-flex-pack: justify;
           justify-content: space-between;
 }
+<<<<<<< HEAD
 .topbar .app-search .form-control {
+=======
+.app-search .form-control {
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
   border: none;
   padding-left: 40px;
   padding-right: 15px;
@@ -15514,7 +15525,11 @@ textarea.form-control-lg {
           box-shadow: none;
   height: 42px;
 }
+<<<<<<< HEAD
 .topbar .app-search .search-widget-icon {
+=======
+.app-search .search-widget-icon {
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
   position: absolute;
   z-index: 10;
   font-size: 18px;
@@ -15524,8 +15539,14 @@ textarea.form-control-lg {
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   cursor: pointer;
+<<<<<<< HEAD
 }
 .topbar .app-search .search-widget-icon-close {
+=======
+
+}
+.app-search .search-widget-icon-close {
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
   right: 7px;
   left: auto !important;
 }
@@ -22151,4 +22172,8 @@ p.no-span::after {
   .timeline .timeline-icon {
     display: none;
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff

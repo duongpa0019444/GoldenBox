@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+<<<<<<< HEAD
         'remember_token',
         'created_at',
         'updated_at',
@@ -28,6 +29,10 @@ class User extends Authenticatable
     ];
 
 
+=======
+    ];
+
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
     /**
      * The attributes that should be hidden for serialization.
      *

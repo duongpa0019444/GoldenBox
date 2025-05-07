@@ -6,12 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
     <meta name="description" content="@yield('description')">
+<<<<<<< HEAD
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css">
+=======
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 </head>
 <body>
     <header>Header</header>
     @yield('content')
     <footer>footer</footer>
+<<<<<<< HEAD
     <!-- Tải jQuery trước, sau đó là Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -19,3 +24,7 @@
     @stack('scripts')
 </body>
 </html>
+=======
+</body>
+</html>
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff

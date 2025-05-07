@@ -1,5 +1,6 @@
 @extends('client.client')
 
+<<<<<<< HEAD
 @section('title', 'Home')
 @section('description', '')
 @section('content')
@@ -353,3 +354,15 @@
         });
     </script>
 @endsection
+=======
+
+@section('title', 'Trang đăng nhập')
+@section('description', '')
+@section('content')
+    <div class="container d-flex justify-content-center align-item-center">
+
+        <h1>Trang chủ</h1>
+
+    </div>
+@endsection
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff

@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 \
 
+=======
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +17,11 @@
     <meta name="description" content="A fully responsive premium admin dashboard template" />
     <meta name="author" content="Techzaa" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<<<<<<< HEAD
+=======
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
@@ -31,6 +39,12 @@
     <!-- Theme Config js (Require in all Page) -->
     <script src="{{ asset('admin/js/config.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<<<<<<< HEAD
+=======
+    <script src="https://cdn.ckeditor.com/ckeditor5/39.0.1/classic/ckeditor.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 
 </head>
 
@@ -77,12 +91,16 @@
 
 
                         <!-- App Search-->
+<<<<<<< HEAD
                         <form class="app-search d-none d-md-block ms-2">
                             <div class="position-relative">
                                 <input type="search" class="form-control" placeholder="Search..." autocomplete="off" value="">
                                 <iconify-icon icon="solar:magnifer-linear" class="search-widget-icon"></iconify-icon>
                             </div>
                         </form>
+=======
+                     
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
                     </div>
                 </div>
             </div>
@@ -230,7 +248,11 @@
                     <li class="menu-title">Quản lý</li>
 
                     <li class="nav-item">
+<<<<<<< HEAD
                         <a class="nav-link" href="/admin">
+=======
+                        <a class="nav-link" href="{{ route('admin.dashboard') }}">
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
                             <span class="nav-icon">
                                 <iconify-icon icon="solar:widget-5-bold-duotone"></iconify-icon>
                             </span>
@@ -248,10 +270,17 @@
                         <div class="collapse" id="sidebarProducts">
                             <ul class="nav sub-navbar-nav">
                                 <li class="sub-nav-item">
+<<<<<<< HEAD
                                     <a class="sub-nav-link" href="/admin/product/list">Danh sách</a>
                                 </li>
                                 <li class="sub-nav-item">
                                     <a class="sub-nav-link" href="/admin/product/create">Thêm sản phẩm</a>
+=======
+                                    <a class="sub-nav-link" href="{{ route('admin.product.index') }}">Danh sách</a>
+                                </li>
+                                <li class="sub-nav-item">
+                                    <a class="sub-nav-link" href="{{ route('admin.products.add') }}">Thêm sản phẩm</a>
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
                                 </li>
 
                             </ul>
@@ -268,10 +297,17 @@
                         <div class="collapse" id="sidebarCategory">
                             <ul class="nav sub-navbar-nav">
                                 <li class="sub-nav-item">
+<<<<<<< HEAD
                                     <a class="sub-nav-link" href="/admin/category/list">Dánh sách</a>
                                 </li>
                                 <li class="sub-nav-item">
                                     <a class="sub-nav-link" href="/admin/category/create">Thêm danh mục</a>
+=======
+                                    <a class="sub-nav-link" href="{{ route('admin.categories.index') }}">Dánh sách</a>
+                                </li>
+                                <li class="sub-nav-item">
+                                    <a class="sub-nav-link" href="{{ route('admin.categories.add') }}">Thêm danh mục</a>
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
                                 </li>
 
                             </ul>
@@ -347,7 +383,11 @@
 
         <!-- END Wrapper -->
         <!-- ========== Footer Start ========== -->
+<<<<<<< HEAD
         <footer class="footer">
+=======
+        {{-- <footer class="footer">
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-12 text-center">
@@ -358,7 +398,11 @@
                     </div>
                 </div>
             </div>
+<<<<<<< HEAD
         </footer>
+=======
+        </footer> --}}
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 
     </div>
 
@@ -374,13 +418,43 @@
     <script src="{{ asset('admin/vendor/jsvectormap/maps/world-merc.js') }}"></script>
     <script src="{{ asset('admin/vendor/jsvectormap/maps/world.js') }}"></script> --}}
 
+<<<<<<< HEAD
     <!-- Dashboard Js -->
+=======
+    <!-- Dashboard Js - tùng dương -->
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
     <script src="{{ asset('admin/js/pages/dashboard.js') }}"></script>
 
 
     <!-- Apex Chart Area Demo js -->
     <!-- <script src="assets/js/components/apexchart-area.js"></script> -->
 
+<<<<<<< HEAD
+=======
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init();
+      setTimeout(() => {
+            fetch('/clear-temp-folder', {
+                method: 'DELETE',
+                headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}', // nếu dùng trong Blade
+                'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Có lỗi xảy ra');
+                return response.json();
+            })
+            .then(data => {
+                console.log(data.message);
+            })
+            .catch(error => {
+                console.error('Lỗi:', error.message);
+            });
+            }, 300000); // 5phút
+    </script>
+>>>>>>> 17d4d96a776f010598a17eafd006c45f04996fff
 
 
 </body>
